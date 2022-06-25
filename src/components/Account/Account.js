@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useEffect } from "react";
 import { supabase } from "../supabaseClient/supabaseClient";
 
@@ -16,7 +17,7 @@ export const Account = ({ session }) => {
       setLoading(true);
       const user = supabase.auth.user();
 
-      let { data, error, status } = await supabase
+      const { data, error, status } = await supabase
         .from("profiles")
         .select("username, website, avatar_url")
         .eq("id", user.id)
@@ -52,7 +53,7 @@ export const Account = ({ session }) => {
         updated_at: new Date(),
       };
 
-      let { error } = await supabase.from("profiles").upsert(updates, {
+      const { error } = await supabase.from("profiles").upsert(updates, {
         returning: "minimal",
       });
 
