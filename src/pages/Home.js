@@ -16,7 +16,7 @@ export const Home = () => {
   }, []);
   return (
     <div>
-      1234564
+      Hello world!
       {!session ? (
         <Auth />
       ) : (
